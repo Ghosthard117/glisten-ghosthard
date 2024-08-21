@@ -1,5 +1,12 @@
-export default function Header () {
+import { createClient } from "@/prismicio";
+import Navbar from "./Navbar";
+
+export default async function Header() {
+  const client = createClient()
+  const settings = await client.getSingle("settings")
   return (
-    <header>Header</header>
+    <header>
+      <Navbar settings={settings} />
+    </header>
   )
 }
